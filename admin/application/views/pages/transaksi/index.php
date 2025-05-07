@@ -5,6 +5,7 @@
         <table class="table table-bordered table-hover table-striped" id="pagination">
             <thead class="table-dark" style="position: sticky; top: 0; z-index: 1020;">
                 <tr class="text-center">
+                    <th>No</th>
                     <th>Tanggal Transaksi</th>
                     <th>Total Transaksi</th>
                     <th>Ongkir Transaksi</th>
@@ -21,7 +22,7 @@
                         <td><?php echo $v['ongkir_transaksi']; ?></td>
                         <td><?php echo $v['status_transaksi']; ?></td>
                         <td>
-                            <a href="" class="btn btn-info">Detail</a>
+                            <a href="<?php echo base_url('transaksi/detail/' . $v['id_transaksi'])?>" class="btn btn-info">Detail</a>
                         </td>
                     </tr>
                 <?php endforeach ?>

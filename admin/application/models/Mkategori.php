@@ -37,7 +37,7 @@ class Mkategori extends CI_Model
 
     function edit($dataInput, $id_kategori)
     {
-        $config['upload_path'] = '/assets/kategori/';
+        $config['upload_path'] = './assets/kategori/';
         $config['allowed_types'] = 'gif|jpg|jpeg|png';
         $this->load->library("upload", $config);
 

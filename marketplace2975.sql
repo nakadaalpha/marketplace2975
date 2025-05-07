@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 14, 2025 at 05:34 PM
+-- Generation Time: Apr 26, 2025 at 06:30 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -39,7 +39,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama`) VALUES
-(1, 'nomnom20041', '737cdf4f47bbb3d6a97a44d3e14c2570d614d6b5', 'Nom Nom');
+(1, 'nomnom20041', '737cdf4f47bbb3d6a97a44d3e14c2570d614d6b5', 'Nom Nom'),
+(2, 'Zetian', '53068bce430b03b156af6eeabc4b25b20c09f53d', 'Zetian Wu\r\n');
 
 -- --------------------------------------------------------
 
@@ -58,8 +59,9 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `foto_kategori`) VALUES
-(1, 'Sparepart', 'Sparepart.png'),
-(2, 'Peripheral', 'Peripheral.png');
+(1, 'Sparepart Motor', 'bike_13792863.png'),
+(2, 'Peripheral PC', 'computer_2656946.png'),
+(9, 'Motor', 'Panigale_V4s1.jpg');
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,7 @@ CREATE TABLE `member` (
   `id_member` int(11) NOT NULL,
   `email_member` varchar(100) NOT NULL,
   `password_member` varchar(100) NOT NULL,
-  `nama_mamber` varchar(100) NOT NULL,
+  `nama_member` varchar(100) NOT NULL,
   `alamat_member` text NOT NULL,
   `nomor_member` varchar(50) NOT NULL,
   `nama_distrik_member` varchar(10) NOT NULL,
@@ -82,7 +84,7 @@ CREATE TABLE `member` (
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`id_member`, `email_member`, `password_member`, `nama_mamber`, `alamat_member`, `nomor_member`, `nama_distrik_member`, `kode_distrik_member`) VALUES
+INSERT INTO `member` (`id_member`, `email_member`, `password_member`, `nama_member`, `alamat_member`, `nomor_member`, `nama_distrik_member`, `kode_distrik_member`) VALUES
 (1, 'zetianwu@gmail.com', 'aa2dcca179c81898be78cdda2cfed0153a1eb952', 'Zetian Wu', 'Susquehanna', '088877771664', 'Jawa', '62'),
 (2, 'hanseoun@gmail.com', 'de06d6eb0c6fdad716b5ae32385f0a540acf70d7', 'Han Seoun', 'Susquehanna', '087789078277', 'Jawa', '512');
 
@@ -120,13 +122,13 @@ CREATE TABLE `transaksi` (
   `id_buyer` int(11) NOT NULL,
   `id_seller` int(11) NOT NULL,
   `tanggal_transaksi` datetime(6) NOT NULL DEFAULT current_timestamp(6),
+  `belanja_transaksi` int(11) NOT NULL,
   `total_transaksi` int(15) NOT NULL,
   `ongkir_transaksi` int(15) NOT NULL,
   `status_transaksi` enum('pesan','lunas','batal','dikirim','selesai') NOT NULL DEFAULT 'pesan',
   `bayar_transaksi` int(11) NOT NULL,
-  `transaksi_detail` int(11) NOT NULL,
-  `distrik_pengirim` int(255) NOT NULL,
-  `nama_pengiriim` varchar(100) NOT NULL,
+  `distrik_pengirim` varchar(255) NOT NULL,
+  `nama_pengirim` varchar(100) NOT NULL,
   `nomor_pengirim` varchar(50) NOT NULL,
   `alamat_pengirim` text NOT NULL,
   `distrik_penerima` varchar(255) NOT NULL,
@@ -139,6 +141,13 @@ CREATE TABLE `transaksi` (
   `estimasi_ekspedisi` varchar(50) NOT NULL,
   `berat_ekspedisi` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `id_buyer`, `id_seller`, `tanggal_transaksi`, `belanja_transaksi`, `total_transaksi`, `ongkir_transaksi`, `status_transaksi`, `bayar_transaksi`, `distrik_pengirim`, `nama_pengirim`, `nomor_pengirim`, `alamat_pengirim`, `distrik_penerima`, `nama_penerima`, `nomor_penerima`, `alamat_penerima`, `nama_ekspedisi`, `layanan_ekspedisi`, `paket_ekspedisi`, `estimasi_ekspedisi`, `berat_ekspedisi`) VALUES
+(1, 1, 1, '2025-04-26 12:49:11.000000', 1000000, 1200000, 20000, 'pesan', 1200000, 'Cakung', 'The Garden', '81888888888', 'Jakarta', 'Depok', 'Mama Yor', '8189539901664', 'Yogyakarta', 'TIFOSI', 'LECLERC', 'Pisau Dapur', 'Tidak Ada', '2');
 
 -- --------------------------------------------------------
 
@@ -154,6 +163,13 @@ CREATE TABLE `transaksi_detail` (
   `harga_beli` int(11) NOT NULL,
   `jumlah_beli` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaksi_detail`
+--
+
+INSERT INTO `transaksi_detail` (`id_transaksi_detail`, `id_transaksi`, `id_produk`, `nama_beli`, `harga_beli`, `jumlah_beli`) VALUES
+(1, 1, 1, 'Tangzu Xuan NV', 1000000, 1);
 
 --
 -- Indexes for dumped tables
@@ -203,13 +219,13 @@ ALTER TABLE `transaksi_detail`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -227,13 +243,13 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `transaksi_detail`
 --
 ALTER TABLE `transaksi_detail`
-  MODIFY `id_transaksi_detail` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

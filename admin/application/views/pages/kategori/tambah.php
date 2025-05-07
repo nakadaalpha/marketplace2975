@@ -4,6 +4,9 @@
         <div class="mb-3">
             <label>Nama Kategori</label>
             <input type="text" name="nama_kategori" class="form-control">
+            <span class="small text-danger">
+                <?php echo form_error("nama_kategori")?>
+            </span>
         </div>
         <div class="mb-3">
             <label>Foto Kategori</label>

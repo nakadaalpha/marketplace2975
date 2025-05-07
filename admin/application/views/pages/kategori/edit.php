@@ -4,6 +4,9 @@
         <div class="mb-3">
             <label>Nama Kategori</label>
             <input type="text" name="nama_kategori" class="form-control" value="<?php echo $kategori['nama_kategori'] ?>">
+            <span class="small text-danger">
+                <?php echo form_error("nama_kategori")?>
+            </span>
         </div>
         <div class="mb-3">
             <label>Foto Kategori</label>
@@ -11,7 +14,7 @@
         </div>
         <div class="mb-3">
             <label>Ubah Foto Kategori</label>
-            <input type="file" name="foto_kategori" class="form-check">
+            <input type="file" name="foto_kategori" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
