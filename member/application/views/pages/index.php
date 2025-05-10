@@ -1,10 +1,10 @@
 <div class="container">
-    <h5 class="text-center">Selamat Datang</h5>
+    <h5>Selamat Datang <?php echo $this->session->userdata('nama_member')?></h5>
     <p class="lead">
         Melalui panel ini Anda dapat mengelola kategori produk dan transaksi yang terjadi di marketplace
     </p>
 
-    <div id="grafik-member-distrik">
+    <!-- <div id="grafik-member-distrik"> -->
 
     </div>
 </div>
@@ -14,7 +14,7 @@
 <script src="https://code.highcharts.com/modules/mouse-wheel-zoom.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-<script>
+<!-- <script>
     Highcharts.chart('grafik-member-distrik', {
         chart: {
             type: 'pie',
@@ -69,4 +69,4 @@
             ]
         }]
     });
-</script>
+</script> -->

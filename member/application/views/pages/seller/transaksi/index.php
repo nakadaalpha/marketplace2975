@@ -1,5 +1,5 @@
 <div class="container mt-5 flex-grow-1">
-    <h1 class="mb-4 text-center">Data Transaksi Beli <?php echo $this->session->userdata("nama_member") ?></h1>
+    <h1 class="mb-4 text-center">Data Transaksi Jual <?php echo $this->session->userdata("nama_member") ?></h1>
     <div class="table-responsive" style="max-height: 70vh; overflow-y: auto;">
         <table class="table table-bordered table-hover table-striped" id="pagination">
             <thead class="table-dark" style="position: sticky; top: 0; z-index: 1020;">
@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($transaksi as $k => $v): ?>
+                <?php foreach ($jual as $k => $v): ?>
                     <tr>
                         <td><?php echo $k + 1; ?></td>
                         <td><?php echo date('d M Y H:i', strtotime($v['tanggal_transaksi'])); ?></td>

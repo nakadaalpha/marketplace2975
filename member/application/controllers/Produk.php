@@ -1,9 +1,10 @@
 <?php
 class Produk extends CI_Controller
 {
-    function __construct(){
+    function __construct()
+    {
         parent::__construct();
-        if(!$this->session->userdata("id_admin")){
+        if (!$this->session->userdata("id_member")) {
             redirect('/', 'refresh');
         }
     }

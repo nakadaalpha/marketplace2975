@@ -1,25 +1,24 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
 class Transaksi extends CI_Controller
 {
-
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         if (!$this->session->userdata("id_member")) {
-            redirect('/', 'refresh');
+            $this->session->set_flashdata("pesan_gagal", "Anda harus login!");
+            redirect('', 'refresh');
         }
     }
-    
     public function index()
     {
         $id_member = $this->session->userdata("id_member");
-
-        $this->load->model("MTransaksi");
-
-        $data["transaksi"] = $this->MTransaksi->transaksi_member_beli($id_member);
+        $this->load->model("Mtransaksi");
+        $data["jual"] = $this->Mtransaksi->transaksi_member_jual($id_member);
 
         $this->load->view('templates/header');
-        $this->load->view('pages/transaksi/index', $data);
+        $this->load->view('pages/seller/transaksi/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -35,4 +34,5 @@ class Transaksi extends CI_Controller
         $this->load->view('pages/seller/transaksi/detail', $data);
         $this->load->view('templates/footer');
     }
+
 }

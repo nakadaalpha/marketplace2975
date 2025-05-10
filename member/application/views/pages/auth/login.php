@@ -95,10 +95,10 @@
             <img src="<?= base_url("assets/login/notnull.png") ?>" width="190px" height="190px" style="margin: -60px 0px 20px">
             <h3>Login with notnull account</h3>
             <form method="post">
-                <input type="text" placeholder="username" name="username" value="<?php echo set_value("username") ?>">
-                <div class="text-danger" style="margin-top: -2vw;"><?php echo form_error("username") ?></div>
-                <input class="mt-4" type="password" placeholder="password" name="password" value="<?php echo set_value("password") ?>">
-                <div class="text-danger" style="margin-top: -2vw;"><?php echo form_error("password") ?></div>
+                <input type="text" placeholder="E-mail" name="email_member" value="<?php echo set_value("email_member") ?>">
+                <div class="text-danger" style="margin-top: -2vw;"><?php echo form_error("email_member") ?></div>
+                <input class="mt-4" type="password" placeholder="password" name="password_member" value="<?php echo set_value("password_member") ?>">
+                <div class="text-danger" style="margin-top: -2vw;"><?php echo form_error("password_member") ?></div>
                 <button class="mt-4" type="submit">LOGIN</button>
             </form>
             <p><a style="text-align: center; text-decoration: none;" href="user_register.php"> Register notnull Account </a></p>
